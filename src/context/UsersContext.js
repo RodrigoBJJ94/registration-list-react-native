@@ -35,7 +35,7 @@ export const UsersProvider = (props) => {
         return fn ? fn(state, action) : state;
     };
 
-    const [state, dispatch] = useReducer(reducer, initialState)
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     return (
         <UsersContext.Provider value={{ state, dispatch }}>

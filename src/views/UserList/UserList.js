@@ -2,7 +2,9 @@ import React, { useContext } from 'react';
 import { View, FlatList, Alert } from 'react-native';
 import { Button, Icon, ListItem } from 'react-native-elements';
 import { Avatar } from 'react-native-elements/dist/avatar/Avatar';
-import UsersContext from '../context/UsersContext';
+import UsersContext from '../../context/UsersContext';
+import './Styles';
+import Styles from './Styles';
 
 export default function UserList(props) {
     const { state, dispatch } = useContext(UsersContext);
@@ -34,17 +36,18 @@ export default function UserList(props) {
                 <Avatar source={{ uri: user.avatarUrl }} />
                 <ListItem.Content>
                     <ListItem.Title>{user.name}</ListItem.Title>
-                    <ListItem.Subtitle>{user.email}</ListItem.Subtitle>
+                    <ListItem.Subtitle
+                        style={Styles.textEmail}>{user.email}</ListItem.Subtitle>
                 </ListItem.Content>
                 <Button
                     onPress={() => props.navigation.navigate("UserForm", user)}
                     type="clear"
-                    icon={<Icon name="edit" size={25} color="#fa0" />}
+                    icon={<Icon name="edit" size={22} color="#fa0" />}
                 />
                 <Button
                     onPress={() => confirmUserDeletion(user)}
                     type="clear"
-                    icon={<Icon name="delete" size={25} color="#f4511e" />}
+                    icon={<Icon name="delete" size={22} color="#f4511e" />}
                 />
             </ListItem>
         );
